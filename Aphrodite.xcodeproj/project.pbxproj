@@ -13,6 +13,8 @@
 		A27D158E28071AD100D711D8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A27D158D28071AD100D711D8 /* Preview Assets.xcassets */; };
 		A27D159028071AD100D711D8 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27D158F28071AD100D711D8 /* Persistence.swift */; };
 		A27D159328071AD100D711D8 /* Aphrodite.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A27D159128071AD100D711D8 /* Aphrodite.xcdatamodeld */; };
+		A27D159B28071B7300D711D8 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27D159A28071B7300D711D8 /* MainView.swift */; };
+		A27D159E2807205500D711D8 /* IconRawImageImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27D159D2807205500D711D8 /* IconRawImageImporter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		A27D158F28071AD100D711D8 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		A27D159228071AD100D711D8 /* Aphrodite.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Aphrodite.xcdatamodel; sourceTree = "<group>"; };
 		A27D159428071AD100D711D8 /* Aphrodite.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Aphrodite.entitlements; sourceTree = "<group>"; };
+		A27D159A28071B7300D711D8 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		A27D159D2807205500D711D8 /* IconRawImageImporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconRawImageImporter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,7 @@
 		A27D158528071AD000D711D8 /* Aphrodite */ = {
 			isa = PBXGroup;
 			children = (
+				A27D159C2807203200D711D8 /* IconGenerator */,
 				A27D158628071AD000D711D8 /* AphroditeApp.swift */,
 				A27D158828071AD000D711D8 /* ContentView.swift */,
 				A27D158A28071AD100D711D8 /* Assets.xcassets */,
@@ -73,6 +78,15 @@
 				A27D158D28071AD100D711D8 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		A27D159C2807203200D711D8 /* IconGenerator */ = {
+			isa = PBXGroup;
+			children = (
+				A27D159A28071B7300D711D8 /* MainView.swift */,
+				A27D159D2807205500D711D8 /* IconRawImageImporter.swift */,
+			);
+			path = IconGenerator;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -146,8 +160,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				A27D159028071AD100D711D8 /* Persistence.swift in Sources */,
+				A27D159E2807205500D711D8 /* IconRawImageImporter.swift in Sources */,
 				A27D158928071AD000D711D8 /* ContentView.swift in Sources */,
 				A27D159328071AD100D711D8 /* Aphrodite.xcdatamodeld in Sources */,
+				A27D159B28071B7300D711D8 /* MainView.swift in Sources */,
 				A27D158728071AD000D711D8 /* AphroditeApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -282,7 +298,10 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Generator Icons From A Image";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -290,8 +309,11 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.roobo.Aphrodite.Aphrodite;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -309,7 +331,10 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Generator Icons From A Image";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -317,8 +342,11 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.roobo.Aphrodite.Aphrodite;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
