@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A27468D62807C6E1003C277E /* AppleIconsReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27468D52807C6E1003C277E /* AppleIconsReader.swift */; };
+		A27468D82807C962003C277E /* AppleBuiltInIcons.json in Resources */ = {isa = PBXBuildFile; fileRef = A27468D72807C962003C277E /* AppleBuiltInIcons.json */; };
+		A27468DA2807FAE3003C277E /* AppIconViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27468D92807FAE3003C277E /* AppIconViewModel.swift */; };
+		A27468DC2808119A003C277E /* AppIconDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27468DB2808119A003C277E /* AppIconDirectory.swift */; };
 		A27D158728071AD000D711D8 /* AphroditeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27D158628071AD000D711D8 /* AphroditeApp.swift */; };
 		A27D158928071AD000D711D8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27D158828071AD000D711D8 /* ContentView.swift */; };
 		A27D158B28071AD100D711D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A27D158A28071AD100D711D8 /* Assets.xcassets */; };
@@ -15,9 +19,16 @@
 		A27D159328071AD100D711D8 /* Aphrodite.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A27D159128071AD100D711D8 /* Aphrodite.xcdatamodeld */; };
 		A27D159B28071B7300D711D8 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27D159A28071B7300D711D8 /* MainView.swift */; };
 		A27D159E2807205500D711D8 /* IconRawImageImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27D159D2807205500D711D8 /* IconRawImageImporter.swift */; };
+		A29BBB932807BC62003736B6 /* Icons.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A29BBB912807BC62003736B6 /* Icons.xcdatamodeld */; };
+		A29BBB952807BD40003736B6 /* AppIconPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29BBB942807BD40003736B6 /* AppIconPersistence.swift */; };
+		A29BBB972807BDEB003736B6 /* AppIconPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29BBB962807BDEB003736B6 /* AppIconPreview.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A27468D52807C6E1003C277E /* AppleIconsReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleIconsReader.swift; sourceTree = "<group>"; };
+		A27468D72807C962003C277E /* AppleBuiltInIcons.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = AppleBuiltInIcons.json; sourceTree = "<group>"; };
+		A27468D92807FAE3003C277E /* AppIconViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconViewModel.swift; sourceTree = "<group>"; };
+		A27468DB2808119A003C277E /* AppIconDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconDirectory.swift; sourceTree = "<group>"; };
 		A27D158328071AD000D711D8 /* Aphrodite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Aphrodite.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A27D158628071AD000D711D8 /* AphroditeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AphroditeApp.swift; sourceTree = "<group>"; };
 		A27D158828071AD000D711D8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -28,6 +39,9 @@
 		A27D159428071AD100D711D8 /* Aphrodite.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Aphrodite.entitlements; sourceTree = "<group>"; };
 		A27D159A28071B7300D711D8 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		A27D159D2807205500D711D8 /* IconRawImageImporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconRawImageImporter.swift; sourceTree = "<group>"; };
+		A29BBB922807BC62003736B6 /* Icons.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Icons.xcdatamodel; sourceTree = "<group>"; };
+		A29BBB942807BD40003736B6 /* AppIconPersistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconPersistence.swift; sourceTree = "<group>"; };
+		A29BBB962807BDEB003736B6 /* AppIconPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconPreview.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,8 +97,15 @@
 		A27D159C2807203200D711D8 /* IconGenerator */ = {
 			isa = PBXGroup;
 			children = (
+				A27468D72807C962003C277E /* AppleBuiltInIcons.json */,
 				A27D159A28071B7300D711D8 /* MainView.swift */,
+				A27468D92807FAE3003C277E /* AppIconViewModel.swift */,
 				A27D159D2807205500D711D8 /* IconRawImageImporter.swift */,
+				A29BBB942807BD40003736B6 /* AppIconPersistence.swift */,
+				A29BBB962807BDEB003736B6 /* AppIconPreview.swift */,
+				A27468D52807C6E1003C277E /* AppleIconsReader.swift */,
+				A27468DB2808119A003C277E /* AppIconDirectory.swift */,
+				A29BBB912807BC62003736B6 /* Icons.xcdatamodeld */,
 			);
 			path = IconGenerator;
 			sourceTree = "<group>";
@@ -148,6 +169,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A27D158E28071AD100D711D8 /* Preview Assets.xcassets in Resources */,
+				A27468D82807C962003C277E /* AppleBuiltInIcons.json in Resources */,
 				A27D158B28071AD100D711D8 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -161,7 +183,13 @@
 			files = (
 				A27D159028071AD100D711D8 /* Persistence.swift in Sources */,
 				A27D159E2807205500D711D8 /* IconRawImageImporter.swift in Sources */,
+				A27468D62807C6E1003C277E /* AppleIconsReader.swift in Sources */,
+				A29BBB952807BD40003736B6 /* AppIconPersistence.swift in Sources */,
+				A27468DC2808119A003C277E /* AppIconDirectory.swift in Sources */,
 				A27D158928071AD000D711D8 /* ContentView.swift in Sources */,
+				A29BBB932807BC62003736B6 /* Icons.xcdatamodeld in Sources */,
+				A29BBB972807BDEB003736B6 /* AppIconPreview.swift in Sources */,
+				A27468DA2807FAE3003C277E /* AppIconViewModel.swift in Sources */,
 				A27D159328071AD100D711D8 /* Aphrodite.xcdatamodeld in Sources */,
 				A27D159B28071B7300D711D8 /* MainView.swift in Sources */,
 				A27D158728071AD000D711D8 /* AphroditeApp.swift in Sources */,
@@ -381,6 +409,16 @@
 			);
 			currentVersion = A27D159228071AD100D711D8 /* Aphrodite.xcdatamodel */;
 			path = Aphrodite.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		A29BBB912807BC62003736B6 /* Icons.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A29BBB922807BC62003736B6 /* Icons.xcdatamodel */,
+			);
+			currentVersion = A29BBB922807BC62003736B6 /* Icons.xcdatamodel */;
+			path = Icons.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

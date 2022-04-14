@@ -12,14 +12,18 @@ struct MainView: View {
     
     @StateObject var importer = IconRawImageImporter()
     
+    @StateObject var viewModel = AppIconViewModel()
+    
     var body: some View {
-        mainView//.frame(width: 360, height: 600, alignment: .center)
+        mainView
     }
     
     @ViewBuilder
     private var mainView: some View {
+        
         VStack(spacing: 24) {
             iconView
+            exportView
         }
         .padding()
     }
@@ -33,10 +37,14 @@ struct MainView: View {
                 .overlay {
                     
                     if let selectedImage = importer.image {
+                    
                         Image(uiImage: selectedImage)
                             .resizable()
                             .cornerRadius(24)
                             .clipped()
+                            .onAppear {
+                                viewModel.rawImage(selectedImage)
+                            }
                         
                     } else {
                         VStack(spacing: 16) {
@@ -58,20 +66,29 @@ struct MainView: View {
         
     }
     
-    @State var selectedImage: UIImage?
-    
-    
-    func handleOnDropProviders(_ providers: [NSItemProvider]) -> Bool {
-        providers.first?.loadDataRepresentation(forTypeIdentifier: "public.image") { (data, error) in
-            guard let data = data, let image = UIImage(data: data) else {
-                return
-            }
-            Task { @MainActor in
-                self.selectedImage = image
-            }
+    @ViewBuilder
+    private var exportView: some View {
+        Divider()
+        VStack {
+            Toggle("iOS", isOn: $viewModel.exporting)
+//            Toggle("iPad", isOn: $viewModel.isExportingToiPad)
+//            Toggle("Mac", isOn: $viewModel.isExportingToMac)
+//            Toggle("Apple Watch", isOn: $viewModel.isExportingToWatch)
         }
-        return true
+        
+        Divider()
+        
+        Button {
+            viewModel.export()
+        } label: {
+            Text("Export")
+        }
+        .buttonStyle(BorderedProminentButtonStyle())
+        .disabled(viewModel.imageDidExits)
+        
     }
+    
+    @State var selectedImage: UIImage?
     
     
 }

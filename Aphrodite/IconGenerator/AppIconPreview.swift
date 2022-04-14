@@ -1,29 +1,35 @@
 //
-//  ContentView.swift
+//  AppIconPreview.swift
 //  Aphrodite
 //
-//  Created by Tyrant on 2022/4/13.
+//  Created by Tyrant on 2022/4/14.
 //
 
 import SwiftUI
-import CoreData
 
-struct ContentView: View {
+struct AppIconPreview: View {
     @Environment(\.managedObjectContext) private var viewContext
 
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
+        sortDescriptors: [NSSortDescriptor(keyPath: \AppIcon.idiom, ascending: true)],
         animation: .default)
-    private var items: FetchedResults<Item>
+    private var items: FetchedResults<AppIcon>
 
+    
+    init() {
+        AppleIconsReader().vv()
+    }
+    
+    
     var body: some View {
-        NavigationView {
+        
+        return NavigationView {
             List {
                 ForEach(items) { item in
                     NavigationLink {
-                        Text("Item at \(item.timestamp!, formatter: itemFormatter)")
+                        Text("Item at \(item.idiom ?? "") / \(item.size) / \(item.scale ?? "")")
                     } label: {
-                        Text(item.timestamp!, formatter: itemFormatter)
+                        Text(item.idiom ?? "")
                     }
                 }
                 .onDelete(perform: deleteItems)
@@ -42,9 +48,11 @@ struct ContentView: View {
     private func addItem() {
 
         withAnimation {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
-
+            let newItem = AppIcon(context: viewContext)
+//            newItem.timestamp = Date()
+            newItem.size = 60
+            newItem.idiom = "iphone"
+            newItem.scale = "2x"
             do {
                 try viewContext.save()
             } catch {
@@ -72,15 +80,8 @@ struct ContentView: View {
     }
 }
 
-private let itemFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateStyle = .short
-    formatter.timeStyle = .medium
-    return formatter
-}()
-
-struct ContentView_Previews: PreviewProvider {
+struct AppIconPreview_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        AppIconPreview().environment(\.managedObjectContext, AppIconPersistence.preview.container.viewContext)
     }
 }
