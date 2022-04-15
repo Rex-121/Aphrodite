@@ -8,20 +8,18 @@
 import SwiftUI
 
 
-class AppIconViewModel: ObservableObject {
-    
-//    let importer = IconRawImageImporter()?
-    
-    var image: UIImage?
+class AppIconViewModel: NSObject, ObservableObject {
+
     
     @Published var exporting = false
     
-    var imageDidExits: Bool {
-        false
-    }
+    @Published var image: UIImage?
+
+    public let providerIdentifier = "public.image"
     
-    func rawImage(_ i: UIImage) {
-        image = i
+    
+    var imageDidExits: Bool {
+        image != nil
     }
     
     private var viewController: UIViewController? {
@@ -32,6 +30,33 @@ class AppIconViewModel: ObservableObject {
     func presentDocumentPickerController(url: URL) {
         let documentPickerVC = UIDocumentPickerViewController(forExporting: [url])
         viewController?.present(documentPickerVC, animated: true)
+    }
+    
+    
+    func importImage() {
+//        #if targetEnvironment(macCatalyst)
+        let documentPickerVC = UIDocumentPickerViewController(forOpeningContentTypes: [.image])
+        documentPickerVC.delegate = self
+        viewController?.present(documentPickerVC, animated: true)
+//        #else
+//        self.viewModel.isPresentingImagePicker = true
+//        #endif
+    }
+    
+    func deliverImage(_ image: UIImage?) {
+        Task { @MainActor in
+            self.image = image
+        }
+    }
+    
+    func OnDropProviders(_ providers: [NSItemProvider]) -> Bool {
+        providers.first?.loadDataRepresentation(forTypeIdentifier: providerIdentifier) { [weak self] (data, error) in
+            guard let data = data, let image = UIImage(data: data) else {
+                return
+            }
+            self?.deliverImage(image)
+        }
+        return true
     }
     
     func export() {
@@ -52,19 +77,40 @@ class AppIconViewModel: ObservableObject {
                 
                 direct.deleteExistingTemporaryDirectoryURL()
                 
+                try await direct.android(rawImage: self.image!)
+
+                
                 try await direct.saveIconsToTemporaryDir(icons: icons, images: imageTrans)
                 
                 let url = try await direct.archiveTemporaryDirectoryToURL()
+                
                 
                 Task { @MainActor in
                     self.presentDocumentPickerController(url: url)
                 }
             }
-//            catch let error as NSError {
-//                Task { @MainActor in
-////                    self.exportingPhase = .failure(error)
-//                }
-//            }
+            catch let error as NSError {
+                print(error)
+                Task { @MainActor in
+                    
+//                    self.exportingPhase = .failure(error)
+                }
+            }
         }
     }
+}
+
+
+extension AppIconViewModel: UIDocumentPickerDelegate {
+    
+    
+    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
+        guard let url = urls.first,
+              let data = try? Data(contentsOf: url),
+              let image = UIImage(data: data) else {
+            return
+        }
+        deliverImage(image)
+    }
+    
 }

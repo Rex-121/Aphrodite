@@ -10,7 +10,7 @@ import SwiftUI
 
 struct MainView: View {
     
-    @StateObject var importer = IconRawImageImporter()
+//    @StateObject var importer = IconRawImageImporter()
     
     @StateObject var viewModel = AppIconViewModel()
     
@@ -30,21 +30,18 @@ struct MainView: View {
     
     private var iconView: some View {
         Button {
-            importer.importImage()
+            viewModel.importImage()
         } label: {
             RoundedRectangle(cornerRadius: 24, style: .continuous)
                 .foregroundColor(.gray.opacity(0.5))
                 .overlay {
                     
-                    if let selectedImage = importer.image {
+                    if let selectedImage = viewModel.image {
                     
                         Image(uiImage: selectedImage)
                             .resizable()
                             .cornerRadius(24)
                             .clipped()
-                            .onAppear {
-                                viewModel.rawImage(selectedImage)
-                            }
                         
                     } else {
                         VStack(spacing: 16) {
@@ -60,21 +57,21 @@ struct MainView: View {
         }
         .frame(width: 200, height: 200, alignment: .center)
         //        .disabled(viewModel.isExportingInProgress)
-        .onDrop(of: [importer.providerIdentifier],
+        .onDrop(of: [viewModel.providerIdentifier],
                 isTargeted: nil,
-                perform: importer.OnDropProviders)
+                perform: viewModel.OnDropProviders)
         
     }
     
     @ViewBuilder
     private var exportView: some View {
-        Divider()
-        VStack {
-            Toggle("iOS", isOn: $viewModel.exporting)
-//            Toggle("iPad", isOn: $viewModel.isExportingToiPad)
-//            Toggle("Mac", isOn: $viewModel.isExportingToMac)
-//            Toggle("Apple Watch", isOn: $viewModel.isExportingToWatch)
-        }
+//        Divider()
+//        VStack {
+//            Toggle("iOS", isOn: $viewModel.exporting)
+////            Toggle("iPad", isOn: $viewModel.isExportingToiPad)
+////            Toggle("Mac", isOn: $viewModel.isExportingToMac)
+////            Toggle("Apple Watch", isOn: $viewModel.isExportingToWatch)
+//        }
         
         Divider()
         
@@ -84,11 +81,11 @@ struct MainView: View {
             Text("Export")
         }
         .buttonStyle(BorderedProminentButtonStyle())
-        .disabled(viewModel.imageDidExits)
+        .disabled(!viewModel.imageDidExits)
         
     }
     
-    @State var selectedImage: UIImage?
+//    @State var selectedImage: UIImage?
     
     
 }

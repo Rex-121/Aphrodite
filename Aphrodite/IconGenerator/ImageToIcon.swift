@@ -35,4 +35,14 @@ struct ImageToIcon {
         return IconImage(builtIn: appIcon, imageData: data)
     }
     
+    
+     func iconResizedData(from image: UIImage, appIconSize: Double) async throws -> Data {
+//        let size = appIcon.icon.size
+        guard let thumbnail = await image.byPreparingThumbnail(ofSize: .init(width: appIconSize, height: appIconSize)),
+              let data = thumbnail.pngData()
+        else {
+            throw NSError(domain: "Tyrant", code: 1, userInfo: [NSLocalizedDescriptionKey: "Failed to generate thumbnail data"])
+        }
+        return data
+    }
 }
