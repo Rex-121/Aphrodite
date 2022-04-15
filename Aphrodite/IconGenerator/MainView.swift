@@ -32,28 +32,47 @@ struct MainView: View {
         Button {
             viewModel.importImage()
         } label: {
-            RoundedRectangle(cornerRadius: 24, style: .continuous)
-                .foregroundColor(.gray.opacity(0.5))
-                .overlay {
+//            if #available(macCatalyst 15.0, *) {
+//                RoundedRectangle(cornerRadius: 24, style: .continuous)
+//                    .foregroundColor(.gray.opacity(0.5))
+//                    .overlay {
+//
+//                        if let selectedImage = viewModel.image {
+//
+//                            Image(uiImage: selectedImage)
+//                                .resizable()
+//                                .cornerRadius(24)
+//                                .clipped()
+//
+//                        } else {
+//                            VStack(spacing: 16) {
+//                                Image(systemName: "photo")
+//                                    .font(.largeTitle)
+//                                Text("Select 1024x1024 icon")
+//                                    .font(.caption)
+//                            }
+//                            .foregroundColor(.white)
+//                        }
+//
+//                    }
+//            } else {
+                if let selectedImage = viewModel.image {
                     
-                    if let selectedImage = viewModel.image {
+                    Image(uiImage: selectedImage)
+                        .resizable()
+                        .cornerRadius(24)
+                        .clipped()
                     
-                        Image(uiImage: selectedImage)
-                            .resizable()
-                            .cornerRadius(24)
-                            .clipped()
-                        
-                    } else {
-                        VStack(spacing: 16) {
-                            Image(systemName: "photo")
-                                .font(.largeTitle)
-                            Text("Select 1024x1024 icon")
-                                .font(.caption)
-                        }
-                        .foregroundColor(.white)
+                } else {
+                    VStack(spacing: 16) {
+                        Image(systemName: "photo")
+                            .font(.largeTitle)
+                        Text("Select 1024x1024 icon")
+                            .font(.caption)
                     }
-                    
+                    .foregroundColor(.blue)
                 }
+//            }
         }
         .frame(width: 200, height: 200, alignment: .center)
         //        .disabled(viewModel.isExportingInProgress)
@@ -80,7 +99,7 @@ struct MainView: View {
         } label: {
             Text("Export")
         }
-        .buttonStyle(BorderedProminentButtonStyle())
+//        .buttonStyle(BorderedProminentButtonStyle())
         .disabled(!viewModel.imageDidExits)
         
     }

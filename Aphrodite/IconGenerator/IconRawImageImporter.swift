@@ -46,7 +46,11 @@ class IconRawImageImporter: NSObject, ObservableObject {
 extension IconRawImageImporter: UIDocumentPickerDelegate {
     
     private var viewController: UIViewController? {
-        (UIApplication.shared.connectedScenes.first as? UIWindowScene)?.keyWindow?.rootViewController
+        if #available(macCatalyst 15.0, *) {
+            return (UIApplication.shared.connectedScenes.first as? UIWindowScene)?.keyWindow?.rootViewController
+        } else {
+            return (UIApplication.shared.connectedScenes.first as? UIWindowScene)?.windows.first?.rootViewController
+        }
     }
     
     func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {

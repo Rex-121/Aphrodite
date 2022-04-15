@@ -333,7 +333,7 @@
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Generator Icons From A Image";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 15.4;
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 14.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -366,7 +366,7 @@
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Generator Icons From A Image";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 15.4;
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 14.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
