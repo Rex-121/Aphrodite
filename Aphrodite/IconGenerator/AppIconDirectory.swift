@@ -25,7 +25,12 @@ struct AppIconDirectory {
     }
     
     func archiveTemporaryDirectoryToURL() async throws -> URL {
+        
+       
+        
         try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<URL, Error>) in
+        
+            
             self.coordinator.coordinate(readingItemAt: temporaryDirectoryURL, options: [.forUploading], error: nil) { zipURL in
                 let destinationURL = self.temporaryDirectoryURL.appendingPathComponent("app_icons.zip")
                 do {
@@ -38,16 +43,17 @@ struct AppIconDirectory {
         }
     }
     
-    func saveIconsToTemporaryDir(icons: AppleBuiltInIcon) async throws {
+    func saveIconsToTemporaryDir(icons: AppleBuiltInIcon, images: [IconImage]) async throws {
         try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<Void, Error>) in
             do {
              
                 let dirURL = self.temporaryDirectoryURL
                     .appendingPathComponent("AppIcon.appiconset")
                 try self.fileManager.createDirectory(at: dirURL, withIntermediateDirectories: true)
-                for icon in icons.images {
-                    let url = dirURL.appendingPathComponent(icon.idiom + icon.size + icon.scale)
-                    try icon.idiom.data(using: .utf8)!.write(to: url)
+
+                for icon in images {
+                    let url = dirURL.appendingPathComponent(icon.builtIn.fileName)
+                    try icon.imageData.write(to: url)
                 }
                 
                 let encode = JSONEncoder()

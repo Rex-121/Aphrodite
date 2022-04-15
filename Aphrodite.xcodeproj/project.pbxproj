@@ -11,6 +11,7 @@
 		A27468D82807C962003C277E /* AppleBuiltInIcons.json in Resources */ = {isa = PBXBuildFile; fileRef = A27468D72807C962003C277E /* AppleBuiltInIcons.json */; };
 		A27468DA2807FAE3003C277E /* AppIconViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27468D92807FAE3003C277E /* AppIconViewModel.swift */; };
 		A27468DC2808119A003C277E /* AppIconDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27468DB2808119A003C277E /* AppIconDirectory.swift */; };
+		A27468DE2809079D003C277E /* ImageToIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27468DD2809079D003C277E /* ImageToIcon.swift */; };
 		A27D158728071AD000D711D8 /* AphroditeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27D158628071AD000D711D8 /* AphroditeApp.swift */; };
 		A27D158928071AD000D711D8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27D158828071AD000D711D8 /* ContentView.swift */; };
 		A27D158B28071AD100D711D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A27D158A28071AD100D711D8 /* Assets.xcassets */; };
@@ -29,6 +30,7 @@
 		A27468D72807C962003C277E /* AppleBuiltInIcons.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = AppleBuiltInIcons.json; sourceTree = "<group>"; };
 		A27468D92807FAE3003C277E /* AppIconViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconViewModel.swift; sourceTree = "<group>"; };
 		A27468DB2808119A003C277E /* AppIconDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconDirectory.swift; sourceTree = "<group>"; };
+		A27468DD2809079D003C277E /* ImageToIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageToIcon.swift; sourceTree = "<group>"; };
 		A27D158328071AD000D711D8 /* Aphrodite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Aphrodite.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A27D158628071AD000D711D8 /* AphroditeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AphroditeApp.swift; sourceTree = "<group>"; };
 		A27D158828071AD000D711D8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 				A27468D72807C962003C277E /* AppleBuiltInIcons.json */,
 				A27D159A28071B7300D711D8 /* MainView.swift */,
 				A27468D92807FAE3003C277E /* AppIconViewModel.swift */,
+				A27468DD2809079D003C277E /* ImageToIcon.swift */,
 				A27D159D2807205500D711D8 /* IconRawImageImporter.swift */,
 				A29BBB942807BD40003736B6 /* AppIconPersistence.swift */,
 				A29BBB962807BDEB003736B6 /* AppIconPreview.swift */,
@@ -189,6 +192,7 @@
 				A27D158928071AD000D711D8 /* ContentView.swift in Sources */,
 				A29BBB932807BC62003736B6 /* Icons.xcdatamodeld in Sources */,
 				A29BBB972807BDEB003736B6 /* AppIconPreview.swift in Sources */,
+				A27468DE2809079D003C277E /* ImageToIcon.swift in Sources */,
 				A27468DA2807FAE3003C277E /* AppIconViewModel.swift in Sources */,
 				A27D159328071AD100D711D8 /* Aphrodite.xcdatamodeld in Sources */,
 				A27D159B28071B7300D711D8 /* MainView.swift in Sources */,

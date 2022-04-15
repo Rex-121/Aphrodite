@@ -42,25 +42,29 @@ class AppIconViewModel: ObservableObject {
         Task.detached { [weak self] in
             guard let self = self else { return }
             do {
-//                let url = Bundle.main.url(forResource: "AppleBuiltInIcons", withExtension: "json")
-
-//                let url = try await self.iconGeneratorService.generateIconsURL(for: appIconTypes, with: selectedImage)
                 
                 let direct = AppIconDirectory()
                 
+                let icons = AppleIconsReader().getAll()
                 
-                await try direct.saveIconsToTemporaryDir(icons: AppleIconsReader().getAll())
+                let imageTrans = try await ImageToIcon().resizeIcons(from: self.image!, for: icons)
+                
+                
+                direct.deleteExistingTemporaryDirectoryURL()
+                
+                try await direct.saveIconsToTemporaryDir(icons: icons, images: imageTrans)
                 
                 let url = try await direct.archiveTemporaryDirectoryToURL()
                 
                 Task { @MainActor in
                     self.presentDocumentPickerController(url: url)
                 }
-            } catch let error as NSError {
-                Task { @MainActor in
-//                    self.exportingPhase = .failure(error)
-                }
             }
+//            catch let error as NSError {
+//                Task { @MainActor in
+////                    self.exportingPhase = .failure(error)
+//                }
+//            }
         }
     }
 }
