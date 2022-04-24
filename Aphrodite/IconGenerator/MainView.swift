@@ -71,8 +71,12 @@ struct MainView: View {
                             .font(.caption)
                     }
                     .foregroundColor(.blue)
-                }
-//            }
+                    .background(Color.black)
+                    .padding()
+                    .cornerRadius(24)
+//                    .overlay(Circle())
+//                }
+            }
         }
         .frame(width: 200, height: 200, alignment: .center)
         //        .disabled(viewModel.isExportingInProgress)
